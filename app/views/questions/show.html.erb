@@ -1,0 +1,17 @@
+<div class="container">  
+  <h2 class="title-lg mb">Привіт, Світ!</h2>
+  <p><%= Time.now %></p>
+
+  <% name = 'Діана'%>
+  <p>Моє ім'я: <%= name %></p>
+
+  <h2 class="title-lg mb">Питання<%= @question.id %></h2>
+
+  <%# <p><%= link_to "Всі питання", "/questions/#{Question.all}" %> <%# </p> - не працює для routes helpers %> 
+
+  <%# <p> <%= link_to "Всі питання", "/questions" %> <%# </p> %>
+
+  <%= render 'question', question: @question %>
+
+ <p class="mb"> <%= link_to "Всі питання", questions_path, class: 'button button-main'%> </p>
+</div>

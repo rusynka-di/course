@@ -1,0 +1,13 @@
+<%# <p> <%= link_to "Всі питання", questions_path %> 
+
+<% @question = current_user.questions.build %> 
+
+<%= form_with model: @question do |form| %>
+  <p> <%= form.label :body, 'Текст питання:' %></p>
+  <p> <%= form.text_area :body, rows: 5, class: 'form-text-area'%></p>
+<%# 
+  <%# <p> <%= form.label :user_id %>
+  <%# <p> <%= form.text_field :body, class: 'form-text-field'%>
+
+  <p class="mt"> <%= form.submit 'Зберегти', class: 'button button-main'%></p>
+<% end %> 
