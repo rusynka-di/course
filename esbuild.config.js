@@ -1,8 +1,16 @@
 const esbuild = require('esbuild');
 
-esbuild.build({
+const options = {
   entryPoints: ['app/javascript/application.js'],
   bundle: true,
   outdir: 'app/assets/builds',
-  watch: process.argv.includes('--watch'),
-}).catch(() => process.exit(1));
+  loader: { '.js': 'jsx' }
+};
+
+if (process.argv.includes('--watch')) {
+  esbuild.context(options).then(ctx => {
+    ctx.watch().catch(() => process.exit(1));
+  });
+} else {
+  esbuild.build(options).catch(() => process.exit(1));
+}

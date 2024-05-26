@@ -1,7 +1,11 @@
 class User < ApplicationRecord
+  has_many :questions, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+ 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :validatable
   has_secure_password
 
-  has_many :questions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
    
